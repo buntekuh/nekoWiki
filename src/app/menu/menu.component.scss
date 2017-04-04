@@ -1,0 +1,22 @@
+@import '../../css/globals.scss';
+
+#main-menu {
+  background-color: $menuBGColor;
+
+  .navbar-nav > li {
+    & > a {
+      color: $menuColor;
+      background-color: inherit;
+    }
+    &.active > a {
+      font-weight: bold;
+    }
+
+  }
+
+  .neko {
+    width: 70px;
+    height: 100px;
+    background: url(/assets/images/neko.png) no-repeat;
+  }
+}
