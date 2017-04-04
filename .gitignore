@@ -40,3 +40,6 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+# ignore images we do not have the rights to
+src/assets/images/neko.png
