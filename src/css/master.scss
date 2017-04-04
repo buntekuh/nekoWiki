@@ -1,14 +1,5 @@
-$menuBG: #6abcca;
+@import 'globals';
 
 body {
-  #main-menu {
-    background-color: $menuBG;
-    color: white;
-
-    .neko {
-      width: 70px;
-      height: 100px;
-      background: url(/assets/images/neko.png) no-repeat;
-    }
-  }
+    background-color: $BGColor;
 }
