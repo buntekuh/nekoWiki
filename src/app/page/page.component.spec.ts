@@ -1,4 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Location } from '@angular/common';
 
 import { PageComponent } from './page.component';
 
@@ -8,7 +11,8 @@ describe('PageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PageComponent ]
+      declarations: [ PageComponent ],
+      imports: [RouterTestingModule]
     })
     .compileComponents();
   }));
@@ -22,4 +26,18 @@ describe('PageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should go home',
+    async(inject([Router, Location], (router: Router, location: Location) => {
+      router.navigate(['/']).then(() => {
+        expect(location.path()).toBe('/');
+  })})));
+
+  it('should render title in a p tag', async(() => {
+    const fixture = TestBed.createComponent(PageComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('p').textContent).toContain('page works!');
+  }));
+
 });
