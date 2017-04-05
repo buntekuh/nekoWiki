@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { Domain } from './domain';
 
 @Component({
   selector: 'app-admin',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  domains: FirebaseListObservable<Domain[]>;
 
-  constructor() { }
+  constructor(private angularFire: AngularFire) {
+  }
 
-  ngOnInit() {
+  ngOnInit(){
+    this.domains = this.angularFire.database.list('/domains');
   }
 
 }
