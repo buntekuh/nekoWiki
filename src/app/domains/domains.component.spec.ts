@@ -2,22 +2,22 @@ import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing'
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Location } from '@angular/common';
-import { AdminComponent } from './admin.component';
+import { DomainsComponent } from './domains.component';
 
-describe('AdminComponent', () => {
-  let component: AdminComponent;
-  let fixture: ComponentFixture<AdminComponent>;
+describe('DomainsComponent', () => {
+  let component: DomainsComponent;
+  let fixture: ComponentFixture<DomainsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdminComponent ],
+      declarations: [ DomainsComponent ],
       imports: [RouterTestingModule]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdminComponent);
+    fixture = TestBed.createComponent(DomainsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -27,13 +27,13 @@ describe('AdminComponent', () => {
   });
 
   it('should render title in a p tag', async(() => {
-    const fixture = TestBed.createComponent(AdminComponent);
+    const fixture = TestBed.createComponent(DomainsComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('p').textContent).toContain('admin works!');
+    expect(compiled.querySelector('p').textContent).toContain('domains works!');
   }));
 
-  it('should go to admin page',
+  it('should go to domains page',
     async(inject([Router, Location], (router: Router, location: Location) => {
       router.navigate(['/']).then(() => {
         expect(location.path()).toBe('/');

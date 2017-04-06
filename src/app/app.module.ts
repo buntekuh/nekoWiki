@@ -5,13 +5,13 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { Routes, RouterModule } from "@angular/router";
-import { AdminComponent } from './admin/admin.component';
+import { DomainsComponent } from './domains/domains.component';
 import { PageComponent } from './page/page.component';
 import { AngularFireModule} from 'angularfire2';
 import { Conf } from './conf';
 
 const appRoutes: Routes = [
-  { path: 'admin', component: AdminComponent },
+  { path: 'domains', component: DomainsComponent },
   { path: '', component: PageComponent }
 ]
 
@@ -21,7 +21,7 @@ export const firebaseConfig = Conf.firebase;
   declarations: [
     AppComponent,
     MenuComponent,
-    AdminComponent,
+    DomainsComponent,
     PageComponent
   ],
   imports: [

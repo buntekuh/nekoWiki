@@ -3,11 +3,11 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Domain } from './domain';
 
 @Component({
-  selector: 'app-admin',
-  templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  selector: 'app-domains',
+  templateUrl: './domains.component.html',
+  styleUrls: ['./domains.component.scss']
 })
-export class AdminComponent implements OnInit {
+export class DomainsComponent implements OnInit {
   domains: FirebaseListObservable<Domain[]>;
 
   constructor(private angularFire: AngularFire) {
