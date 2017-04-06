@@ -9,6 +9,7 @@ import { DomainsComponent } from './domains/domains.component';
 import { PageComponent } from './page/page.component';
 import { AngularFireModule} from 'angularfire2';
 import { Conf } from './conf';
+import { EditDomainComponent } from './domains/edit-domain/edit-domain.component';
 
 const appRoutes: Routes = [
   { path: 'domains', component: DomainsComponent },
@@ -22,7 +23,8 @@ export const firebaseConfig = Conf.firebase;
     AppComponent,
     MenuComponent,
     DomainsComponent,
-    PageComponent
+    PageComponent,
+    EditDomainComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+<form class="{{ hidden }}" (ngSubmit)="submit(form)" #form="ngForm">
+  <div class="row">
+     <div class="col-xs-12">
+      <div class="input-group input-group-sm">
+        <input type="text" class="form-control input-sm" placeholder="Name" ngModel name="name" value="{{name}}">
+        <span class="input-group-btn">
+          <button class="btn btn-primary btn-sm" type="submit">Update</button>
+        </span>
+      </div>
+    </div>
+  </div>
+</form>
