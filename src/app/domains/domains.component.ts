@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFire, FirebaseListObservable, AngularFireDatabase } from 'angularfire2';
 import { Domain } from './domain';
 import { EditDomainComponent } from './edit-domain/edit-domain.component'
 
@@ -17,7 +17,11 @@ export class DomainsComponent implements OnInit {
   }
 
   ngOnInit(){
-    this.domains = this.angularFire.database.list('/domains');
+    this.domains = this.database().list('/domains');
+  }
+
+  database() : AngularFireDatabase {
+    return this.angularFire.database;
   }
 
   new() {
@@ -28,11 +32,7 @@ export class DomainsComponent implements OnInit {
     this.editDomainComponent.edit(domain);
   }
 
-  update(domain : Domain) : void {
-    console.log("blumm");
-  }
-
   domainEdited($event) {
-    console.log("blumm");
+    this.database().object("domains/"+$event.$key).update({name: $event.name});
   }
 }

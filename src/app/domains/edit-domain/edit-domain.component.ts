@@ -10,7 +10,6 @@ import { Domain } from '../domain';
 export class EditDomainComponent implements OnInit {
   domain : Domain;
   name   : string;
-  key    : number;
   hidden : string = 'hidden';
   @Output('domainEdited') domainEdited : EventEmitter<Domain> = new EventEmitter<Domain>();
 
@@ -19,14 +18,23 @@ export class EditDomainComponent implements OnInit {
   ngOnInit() {
   }
 
-  public edit(domain) {
-    this.domain = domain;
-    this.name = domain.name;
-    this.key = domain.$key;
+  hide() : void {
+    this.hidden = "hidden";
+  }
+
+  show() : void {
     this.hidden = '';
   }
 
+  public edit(domain) {
+    this.show();
+    this.domain = domain;
+    this.name = domain.name;
+  }
+
   submit(form: NgForm) {
+    this.hide();
+    this.domain.name = form.value.name;
     this.domainEdited.emit(this.domain);
   }
 
