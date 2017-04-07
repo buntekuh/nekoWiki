@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Domain } from '../domain';
 
@@ -10,8 +10,9 @@ import { Domain } from '../domain';
 export class EditDomainComponent implements OnInit {
   domain : Domain;
   name   : string;
-  id     : number;
+  key    : number;
   hidden : string = 'hidden';
+  @Output('domainEdited') domainEdited : EventEmitter<Domain> = new EventEmitter<Domain>();
 
   constructor() { }
 
@@ -20,13 +21,13 @@ export class EditDomainComponent implements OnInit {
 
   public edit(domain) {
     this.domain = domain;
-    this.name = domain.$value;
-    this.id = domain.$key;
+    this.name = domain.name;
+    this.key = domain.$key;
     this.hidden = '';
   }
 
   submit(form: NgForm) {
-
+    this.domainEdited.emit(this.domain);
   }
 
 }

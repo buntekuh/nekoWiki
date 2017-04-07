@@ -32,4 +32,7 @@ export class DomainsComponent implements OnInit {
     console.log("blumm");
   }
 
+  domainEdited($event) {
+    console.log("blumm");
+  }
 }

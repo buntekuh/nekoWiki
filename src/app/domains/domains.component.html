@@ -1,10 +1,10 @@
-<app-edit-domain></app-edit-domain>
+<app-edit-domain (domainEdited)="domainEdited($event)"></app-edit-domain>
 <br />
 <table class="table table-striped">
   <tbody>
     <tr *ngFor="let domain of domains | async">
       <td>
-        {{ domain.$value }}
+        {{ domain.name }}
         <div class="pull-right">
           <button class="btn btn-sm btn-success" (click)="edit(domain)">Edit</button>
         </div>
