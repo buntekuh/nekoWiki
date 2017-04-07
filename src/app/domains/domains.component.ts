@@ -32,7 +32,13 @@ export class DomainsComponent implements OnInit {
     this.editDomainComponent.edit(domain);
   }
 
-  domainEdited($event) {
-    this.database().object("domains/"+$event.$key).update({name: $event.name});
+  domainEdited(domain) {
+    if (domain.$key == undefined) {
+      debugger;
+      this.domains.push(domain);
+    }
+    else {
+      this.database().object("domains/"+domain.$key).update({name: domain.name});
+    }
   }
 }

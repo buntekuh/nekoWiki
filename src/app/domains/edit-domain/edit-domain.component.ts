@@ -22,13 +22,13 @@ export class EditDomainComponent implements OnInit {
     this.hidden = "hidden";
   }
 
-  show() : void {
+  show(value: string) : void {
+    this.name = value;
     this.hidden = '';
   }
 
   public edit(domain) {
-    this.show();
-    this.domain = domain;
+    this.show(domain.name);
     this.name = domain.name;
   }
 
