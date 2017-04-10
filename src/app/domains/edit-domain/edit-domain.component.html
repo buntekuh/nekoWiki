@@ -1,12 +1,20 @@
-<form class="{{ hidden }}" (ngSubmit)="submit(form)" #form="ngForm">
-  <div class="row">
-     <div class="col-xs-12">
-      <div class="input-group input-group-sm">
-        <input type="text" class="form-control input-sm" placeholder="Name" ngModel name="name" value="{{ name }}">
-        <span class="input-group-btn">
-          <button class="btn btn-primary btn-sm" type="submit">{{ submitButtonCaption }}</button>
-        </span>
+<section class="{{ hidden }}">
+  <form (ngSubmit)="submit(form)" #form="ngForm">
+    <div class="row">
+       <div class="col-xs-12">
+        <div class="input-group input-group-sm">
+          <input type="text" class="form-control input-sm" placeholder="Name" ngModel name="name" value="{{ name }}">
+          <span class="input-group-btn">
+            <button class="btn btn-primary btn-sm" type="submit">{{ submitButtonCaption }}</button>
+          </span>
+        </div>
       </div>
     </div>
+  </form>
+  <br />
+  <div class="pull-right">
+    <button class="btn btn-sm btn-danger {{ deleteHidden }}">Delete</button>
+    <button class="btn btn-sm">Cancel</button>
   </div>
-</form>
+  <br /><br />
+</section>

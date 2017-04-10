@@ -1,17 +1,20 @@
 import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
-import { Location } from '@angular/common';
 import { DomainsComponent } from './domains.component';
+import { EditDomainComponent } from './edit-domain/edit-domain.component'
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule} from 'angularfire2';
+import { Conf } from '../conf';
 
 describe('DomainsComponent', () => {
   let component: DomainsComponent;
   let fixture: ComponentFixture<DomainsComponent>;
+  let location, router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DomainsComponent ],
-      imports: [RouterTestingModule]
+      declarations: [ DomainsComponent, EditDomainComponent ],
+      imports: [
+        FormsModule, AngularFireModule.initializeApp(Conf.firebase)]
     })
     .compileComponents();
   }));
@@ -26,17 +29,10 @@ describe('DomainsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render title in a p tag', async(() => {
+  it('should render a add button', async(() => {
     const fixture = TestBed.createComponent(DomainsComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('p').textContent).toContain('domains works!');
+    expect(compiled.querySelector('.btn-add').textContent).toContain('Add');
   }));
-
-  it('should go to domains page',
-    async(inject([Router, Location], (router: Router, location: Location) => {
-      router.navigate(['/']).then(() => {
-        expect(location.path()).toBe('/');
-  })})));
-
 });
