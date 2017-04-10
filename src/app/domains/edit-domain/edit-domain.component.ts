@@ -11,6 +11,9 @@ export class EditDomainComponent implements OnInit {
   domain : Domain;
   name   : string;
   hidden : string = 'hidden';
+  submitButtonCaption : string;
+  deleteHidden : string;
+
   @Output('domainEdited') domainEdited : EventEmitter<Domain> = new EventEmitter<Domain>();
 
   constructor() { }
@@ -22,20 +25,29 @@ export class EditDomainComponent implements OnInit {
     this.hidden = "hidden";
   }
 
-  show(value: string) : void {
-    this.name = value;
+  show(domain: Domain) : void {
+    this.domain = domain;
+    this.name = domain.name;
     this.hidden = '';
   }
 
-  public edit(domain) {
-    this.show(domain.name);
-    this.name = domain.name;
+  new(domain) {
+    this.submitButtonCaption = "Create";
+    this.deleteHidden = 'hidden';
+    this.show(domain);
   }
 
-  submit(form: NgForm) {
+  edit(domain) {
+    this.submitButtonCaption = "Update";
+    this.deleteHidden = '';
+    this.show(domain);
+  }
+
+  submit(form: NgForm) : boolean {
     this.hide();
     this.domain.name = form.value.name;
     this.domainEdited.emit(this.domain);
+    return false;
   }
 
 }

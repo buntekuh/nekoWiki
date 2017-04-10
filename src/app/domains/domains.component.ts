@@ -25,7 +25,7 @@ export class DomainsComponent implements OnInit {
   }
 
   new() {
-    this.editDomainComponent.edit(new Domain());
+    this.editDomainComponent.new(new Domain());
   }
 
   edit(domain : Domain) : void {
@@ -34,7 +34,6 @@ export class DomainsComponent implements OnInit {
 
   domainEdited(domain) {
     if (domain.$key == undefined) {
-      debugger;
       this.domains.push(domain);
     }
     else {
